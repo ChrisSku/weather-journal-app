@@ -33,15 +33,6 @@ function setData(data) {
     section.textContent = JSON.stringify(data)
 }
 
-function getEstimatedLocation() {
-    fetch('http://ip-api.com/json?fields=lat,lon')
-        .then((response) => response.json())
-        .then((data) =>
-            fetchFromWheater('weather', `lat=${data.lat}&lon=${data.lon}`)
-        )
-        .then(setData)
-}
-
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -57,6 +48,4 @@ function getLocation() {
         fetchFromWheater('weather', `q=Stuttgart`).then(setData)
     }
 }
-getEstimatedLocation()
-
 getLocation()
