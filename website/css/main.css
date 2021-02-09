@@ -1,0 +1,25 @@
+#search-field {
+    border: solid 1px #ccc;
+    position: relative;
+    padding: 0 8px;
+}
+
+#search-field input {
+    border: none;
+    outline: 0;
+    font-size: 1em;
+    outline: 0;
+    padding: 1em 0 10px;
+}
+
+#search-field label {
+    font-size: 1em;
+    position: absolute;
+    transform: translate(0, 1em) scale(1);
+    transform-origin: top left;
+    transition: all 0.1s ease-in-out;
+}
+
+#search-field.active label {
+    transform: translate(0, 4px) scale(0.75);
+}
