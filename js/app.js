@@ -22,6 +22,7 @@ async function fetchFromWheater(endpoint, query) {
 //     console.log(data.main.temp)
 // )
 
+searchField.addEventListener('submit', (event) => event.preventDefault())
 searchInput.addEventListener('focus', () => searchField.classList.add('active'))
 searchInput.addEventListener('blur', (event) => {
     if (!event.target.value) searchField.classList.remove('active')
