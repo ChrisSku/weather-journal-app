@@ -7,15 +7,46 @@
         <link rel="stylesheet" href="css/main.css" />
         <title>Weather@Chris</title>
     </head>
+
     <body>
         <header>
             <h1>Welcome to <em>Weather@Chris!</em></h1>
-            <form id="search-field" action="#" method="GET">
-                <label for="searchInput">Country:</label>
-                <input type="search" id="search-input" name="searchInput" />
+            <form class="input-form" id="search-field" action="#" method="GET">
+                <label for="searchInput">ZIP:</label>
+                <input
+                    type="search"
+                    id="zip"
+                    placeholder="enter zip code here"
+                    name="searchInput"
+                />
             </form>
         </header>
-        <section></section>
+        <div id="noDataText">Search for Zip code!</div>
+        <section id="weather" class="hidden">
+            <h2 id="weather-place"></h2>
+            <p id="weather-coords">
+                <b>Coordinates:</b> <span id="lat"></span>
+                <span id="lon"></span>
+            </p>
+            <div id="entryHolder">
+                <div id="date"></div>
+                <div id="temp"></div>
+                <div id="content"></div>
+            </div>
+        </section>
+        <form
+            class="input-form hidden"
+            id="feelings-form"
+            action="#"
+            method="GET"
+        >
+            <label for="feelings">Feelings:</label>
+            <textarea
+                id="feelings"
+                placeholder="Enter your feeling about the wheater of this place here"
+                name="feelings"
+            ></textarea>
+        </form>
         <footer></footer>
     </body>
     <script src="js/app.js"></script>

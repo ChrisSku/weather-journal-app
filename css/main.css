@@ -1,25 +1,81 @@
-#search-field {
-    border: solid 1px #ccc;
-    position: relative;
-    padding: 0 8px;
+body {
+    display: grid;
+    gap: 1em;
+    padding: 2em 2vw;
 }
 
-#search-field input {
+#weather {
+    display: grid;
+    grid-template-areas:
+        'place coords'
+        'entry entry';
+    padding: 0 2vw;
+}
+
+.input-form {
+    border: solid 1px #ccc;
+    padding: 5px 8px;
+}
+
+.input-form input {
+    width: 100%;
     border: none;
     outline: 0;
-    font-size: 1em;
+}
+
+.input-form textarea {
+    width: 100%;
+    border: none;
     outline: 0;
-    padding: 1em 0 10px;
+    height: 20vh;
 }
 
-#search-field label {
-    font-size: 1em;
-    position: absolute;
-    transform: translate(0, 1em) scale(1);
-    transform-origin: top left;
-    transition: all 0.1s ease-in-out;
+#weather-coords {
+    grid-area: coords;
+    justify-self: end;
+    display: grid;
+    column-gap: 5px;
 }
 
-#search-field.active label {
-    transform: translate(0, 4px) scale(0.75);
+#weather-coords b {
+    justify-self: end;
+}
+
+#feelings-form.hidden {
+    visibility: hidden;
+}
+
+#weather.hidden {
+    visibility: hidden;
+}
+
+#entryHolder {
+    grid-area: entry;
+}
+
+#noDataText {
+    width: 100%;
+    text-align: center;
+}
+
+#noDataText.hidden {
+    display: none;
+}
+
+@media (min-width: 500px) {
+    #weather-coords #lon {
+        grid-column: 2/2;
+    }
+}
+
+@media (min-width: 600px) {
+    body {
+        padding: 2em 10vw;
+    }
+}
+
+@media (min-width: 900px) {
+    #weather {
+        padding: 0 5vw;
+    }
 }

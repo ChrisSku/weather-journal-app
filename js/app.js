@@ -4,14 +4,20 @@ const wheaterUrl = 'https://api.openweathermap.org/data/2.5/'
 
 //global elements
 const searchField = document.getElementById('search-field')
-const searchInput = document.getElementById('search-input')
-const section = document.querySelector('section')
+const searchInput = document.getElementById('zip')
+const weatherPlace = document.getElementById('weather-place')
+const weather = document.getElementById('weather')
+const lat = document.getElementById('lat')
+const lon = document.getElementById('lon')
+const date = document.getElementById('date')
+const temp = document.getElementById('temp')
+const content = document.getElementById('content')
+const noDataText = document.getElementById('noDataText')
+const feelingsForm = document.getElementById('feelings-form')
 
 // helper funtions
-async function fetchFromWheater(endpoint, query) {
-    return await fetch(
-        `${wheaterUrl}${endpoint}?${query}&units=metric${API_KEY}`
-    )
+function fetchFromWheater(endpoint, query) {
+    return fetch(`${wheaterUrl}${endpoint}?${query}&units=metric${API_KEY}`)
         .then((response) => response.json())
         .catch((error) => console.error(error))
 }
@@ -22,16 +28,27 @@ async function fetchFromWheater(endpoint, query) {
 //     console.log(data.main.temp)
 // )
 
-searchField.addEventListener('submit', (event) => event.preventDefault())
-searchInput.addEventListener('focus', () => searchField.classList.add('active'))
-searchInput.addEventListener('blur', (event) => {
-    if (!event.target.value) searchField.classList.remove('active')
+searchField.addEventListener('submit', (event) => {
+    event.preventDefault()
+    fetchFromWheater('weather', 'zip=' + searchInput.value)
+        .then(setData)
+        .then(() => {
+            noDataText.classList.add('hidden')
+            weather.classList.remove('hidden')
+            feelingsForm.classList.remove('hidden')
+        })
 })
 
 function setData(data) {
-    searchField.classList.add('active')
-    searchInput.value = data.name
-    section.textContent = JSON.stringify(data)
+    weatherPlace.textContent = `${data.name} (${searchInput.value})`
+    lat.textContent = `${data.coord.lat}° N`
+    lon.textContent = `${data.coord.lon}° E`
+    date.textContent = 'Date: ' + new Date(data.dt).toLocaleString()
+    temp.textContent = `Current Temperature: ${data.main.temp}°C (Feels like ${data.main.feels_like}°C)`
+    content.innerHTML = `<p>Maximum Temperature: ${data.main.temp_min}°C</p>
+    <p>Minimum Temperature: ${data.main.temp_max}°C</p>
+    <p>Pressure: ${data.main.pressure} hPa</p>
+    <p>Humidity: ${data.main.humidity} %</p>`
 }
 
 function getLocation() {
@@ -49,4 +66,4 @@ function getLocation() {
         fetchFromWheater('weather', `q=Stuttgart`).then(setData)
     }
 }
-getLocation()
+// getLocation()
