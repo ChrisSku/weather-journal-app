@@ -59,18 +59,19 @@ function setData(data) {
 
 // if response is not ok it will show the error in the UI
 function checkWheaterResponse(response) {
-    if (!response.ok)
+    if (!response.ok) {
         noDataText.innerHTML = `Error ${response.status}: ${response.statusText}`
+        noDataText.classList.remove('hidden')
+        currentWeather.classList.add('hidden')
+    }
 
     return response.json()
 }
 
 // main functions
-function getAllDataFromServerAndDisplayOnUI() {
-    return fetch('/all')
-        .then((response) => response.json())
-        .then(formatToFeelingsTemplateAndDisplayOnUI)
-        .catch((error) => console.error(error))
+async function getAllDataFromServerAndDisplayOnUI() {
+    const data = await fetch('/all').then((response) => response.json())
+    formatToFeelingsTemplateAndDisplayOnUI(data)
 }
 
 function fetchFromWheater(endpoint, query) {
@@ -102,7 +103,7 @@ searchField.addEventListener('submit', (event) => {
             noDataText.classList.add('hidden')
             currentWeather.classList.remove('hidden')
         })
-        .then(() => getAllDataFromServerAndDisplayOnUI())
+        .then(getAllDataFromServerAndDisplayOnUI)
         .catch((error) => console.error(error))
 })
 
