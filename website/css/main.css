@@ -4,7 +4,7 @@ body {
     padding: 2em 2vw;
 }
 
-#weather {
+.weather {
     display: grid;
     grid-template-areas:
         'place coords'
@@ -13,6 +13,8 @@ body {
 }
 
 .input-form {
+    display: grid;
+    gap: 0.2em;
     border: solid 1px #ccc;
     padding: 5px 8px;
 }
@@ -21,23 +23,29 @@ body {
     width: 100%;
     border: none;
     outline: 0;
+    margin-bottom: 1em;
 }
 
 .input-form textarea {
     width: 100%;
     border: none;
     outline: 0;
-    height: 20vh;
+    height: 10vh;
 }
 
-#weather-coords {
+.input-form button {
+    width: fit-content;
+    justify-self: center;
+}
+
+.weather-coords {
     grid-area: coords;
     justify-self: end;
     display: grid;
     column-gap: 5px;
 }
 
-#weather-coords b {
+.weather-coords b {
     justify-self: end;
 }
 
@@ -45,7 +53,7 @@ body {
     visibility: hidden;
 }
 
-#weather.hidden {
+.weather.hidden {
     visibility: hidden;
 }
 
@@ -63,7 +71,7 @@ body {
 }
 
 @media (min-width: 500px) {
-    #weather-coords #lon {
+    .weather-coords .lon {
         grid-column: 2/2;
     }
 }
@@ -75,7 +83,18 @@ body {
 }
 
 @media (min-width: 900px) {
-    #weather {
+    .weather {
         padding: 0 5vw;
     }
+}
+
+.saved-feeling {
+    border: solid 1px #ccc;
+    padding: 5px;
+}
+
+#saved-feeling-section {
+    display: grid;
+    grid: initial;
+    gap: 5px;
 }

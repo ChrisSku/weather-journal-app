@@ -14,19 +14,25 @@
             <form class="input-form" id="search-field" action="#" method="GET">
                 <label for="searchInput">ZIP:</label>
                 <input
-                    type="search"
                     id="zip"
                     placeholder="enter zip code here"
                     name="searchInput"
                 />
+                <label for="feelings">Feelings:</label>
+                <textarea
+                    id="feelings"
+                    placeholder="Enter your feeling about the wheater of this place here"
+                    name="feelings"
+                ></textarea>
+                <button id="generate">Generate!</button>
             </form>
         </header>
         <div id="noDataText">Search for Zip code!</div>
-        <section id="weather" class="hidden">
-            <h2 id="weather-place"></h2>
-            <p id="weather-coords">
+        <section class="weather hidden" id="currentWeather">
+            <h2 id="currentWeather-place"></h2>
+            <p class="weather-coords">
                 <b>Coordinates:</b> <span id="lat"></span>
-                <span id="lon"></span>
+                <span class="lon" id="lon"></span>
             </p>
             <div id="entryHolder">
                 <div id="date"></div>
@@ -34,20 +40,8 @@
                 <div id="content"></div>
             </div>
         </section>
-        <form
-            class="input-form hidden"
-            id="feelings-form"
-            action="#"
-            method="GET"
-        >
-            <label for="feelings">Feelings:</label>
-            <textarea
-                id="feelings"
-                placeholder="Enter your feeling about the wheater of this place here"
-                name="feelings"
-            ></textarea>
-        </form>
-        <footer></footer>
+
+        <section class="weather" id="saved-feeling-section"></section>
     </body>
     <script src="js/app.js"></script>
 </html>
