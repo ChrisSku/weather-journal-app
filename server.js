@@ -7,7 +7,7 @@ const cors = require('cors')
 const port = 3000
 const app = express()
 
-const projectData = []
+const projectData = {}
 
 //app configuration
 app.use(cors())
@@ -23,7 +23,8 @@ app.get('/all', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-    projectData.push(req.body)
+    if (!projectData.data) projectData['data'] = []
+    projectData.data.push(req.body)
     res.send(req.body)
 })
 
