@@ -23,8 +23,8 @@ app.get('/all', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-    if (!projectData.data) projectData['data'] = []
-    projectData.data.push(req.body)
+    if (!projectData.savedWeather) projectData['savedWeather'] = []
+    projectData.savedWeather.push(req.body)
     res.send(req.body)
 })
 

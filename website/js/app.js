@@ -19,7 +19,7 @@ const savedFeelingSection = document.getElementById('saved-feeling-section')
 // helper funtions
 function formatToFeelingsTemplateAndDisplayOnUI(serverData) {
     let insertHTML = '<h1>Saved Feelings:</h1>'
-    for (const data of serverData.data) {
+    for (const data of serverData.savedWeather) {
         insertHTML += `<div class="weather saved-feeling">
                         <h2>${data.name} (${data.zip})</h2>
                         <p class="weather-coords">
