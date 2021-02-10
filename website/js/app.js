@@ -20,7 +20,7 @@ const savedFeelingSection = document.getElementById('saved-feeling-section')
 function formatToFeelingsTemplateAndDisplayOnUI(dataList) {
     let insertHTML = '<h1>Saved Feelings:</h1>'
     for (const data of dataList) {
-        insertHTML += `<div class="saved-feeling">
+        insertHTML += `<div class="weather saved-feeling">
                         <h2>${data.name} (${data.zip})</h2>
                         <p class="weather-coords">
                             <b>Coordinates:</b> <span>${data.coord.lat}° N</span>

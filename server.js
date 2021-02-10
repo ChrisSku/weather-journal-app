@@ -7,7 +7,7 @@ const cors = require('cors')
 const port = 3000
 const app = express()
 
-let projectData = []
+const projectData = []
 
 //app configuration
 app.use(cors())
